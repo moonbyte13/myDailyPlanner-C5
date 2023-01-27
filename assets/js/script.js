@@ -1,6 +1,6 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+/* Wraped all code that interacts with the DOM in a call to jQuery to ensure that
+the code isn't run until the browser has finished rendering all the elements
+in the html. */
 
 const locale = {} // Your Day.js locale Object.
 
@@ -11,7 +11,6 @@ let cTime = document.querySelector('#currentTime')
 let hour = document.querySelector('#hour')
 let now = dayjs();
 let currentHour = now.format('H')
-let textArea = $('.description')
 let saveBtn = $('.saveBtn')
 /* // UpdateLocale adds .updateLocale API to update a locale's properties.
 let updateLocale = require('dayjs/plugin/updateLocale')
@@ -24,6 +23,14 @@ dayjs.updateLocale('en', {
 
 $(function () {
   refreshColor()
+  displayText()
+  function displayText() {
+    let blockObj = JSON.parse(localStorage.getItem('plannerNotes')) || {}
+    let textKeys = Object.keys(blockObj)
+    for (let i = 0; i < textKeys.length; i++) {
+      $(`#text-${textKeys[i]}`).val(blockObj[textKeys[i]])
+    }
+  }
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -31,9 +38,18 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   $(saveBtn).click(function(){
-    console.log($(this).parent().find(textArea).slice('value'))
+    let id = $(this).parent().attr("id")
+    console.log($(this).siblings('.description'))
+    console.log(id)
+    let blockId = $(this).parent().attr('id')
+    let blockText = $(this).siblings('.description').val()
+    
+    //blockObj['blockText'] = blockText
+    let blockObj = JSON.parse(localStorage.getItem('plannerNotes')) || {}
+    blockObj[blockId] = blockText
+    localStorage.setItem('plannerNotes', JSON.stringify(blockObj))
   })
-  // jquery this  element
+
   function refreshColor() {
     $('.time-block').each(function(){
       // console.log(this.id + ' :id = ' + currentHour)
