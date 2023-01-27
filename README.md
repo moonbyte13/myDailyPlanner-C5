@@ -34,7 +34,7 @@ THEN the saved events persist
 ## Demo Given
 <img src='./assets/images/05-third-party-apis-homework-demo.gif' width='90%'><br>
 
-## My Demo
+## My Deployment Demo
 <img src='./assets/images/deployment.gif' width='90%'><br>
 
 ## Credits
