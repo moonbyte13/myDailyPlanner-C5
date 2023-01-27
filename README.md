@@ -32,11 +32,10 @@ THEN the saved events persist
 ```
 
 ## Demo Given
-<img src='./assets/images/05-third-party-apis-homework-demo.gif'><br>
+<img src='./assets/images/05-third-party-apis-homework-demo.gif' width='90%'><br>
 
 ## My Demo
-<img src='./assets/images/deployment.gif'>
-<br>
+<img src='./assets/images/deployment.gif' width='90%'><br>
 
 ## Credits
 Shoutout to the edX tutors, they help so much and are very paitent
