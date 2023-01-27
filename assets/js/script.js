@@ -2,28 +2,24 @@
 the code isn't run until the browser has finished rendering all the elements
 in the html. */
 
-const locale = {} // Your Day.js locale Object.
+// Defining day.js locale obj
+const locale = {}; // Your Day.js locale Object.
+dayjs.locale(locale, null, true); // load locale for later use
 
-dayjs.locale(locale, null, true) // load locale for later use
-
-let cDay = document.querySelector('#currentDay')
-let cTime = document.querySelector('#currentTime')
-let hour = document.querySelector('#hour')
+// My variables
+let cDay = document.querySelector('#currentDay');
+let cTime = document.querySelector('#currentTime');
+let hour = document.querySelector('#hour');
 let now = dayjs();
-let currentHour = now.format('H')
-let saveBtn = $('.saveBtn')
-/* // UpdateLocale adds .updateLocale API to update a locale's properties.
-let updateLocale = require('dayjs/plugin/updateLocale')
-dayjs.extend(updateLocale)
+let currentHour = now.format('H');
+let saveBtn = $('.saveBtn');
 
-dayjs.updateLocale('en', {
-  months : String['']
-}) */
-
-
+// Function called after page loads
 $(function () {
-  refreshColor()
-  displayText()
+  refreshColor();
+  displayText();
+
+  // displayText function to display the text from the localStorage
   function displayText() {
     let blockObj = JSON.parse(localStorage.getItem('plannerNotes')) || {}
     let textKeys = Object.keys(blockObj)
@@ -31,12 +27,8 @@ $(function () {
       $(`#text-${textKeys[i]}`).val(blockObj[textKeys[i]])
     }
   }
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
+
+  // jquery event listener on click to call this function to grab the sibling text and store it in an object
   $(saveBtn).click(function(){
     let id = $(this).parent().attr("id")
     console.log($(this).siblings('.description'))
@@ -50,6 +42,7 @@ $(function () {
     localStorage.setItem('plannerNotes', JSON.stringify(blockObj))
   })
 
+  // refreshColor function to refresh the color of the time blocks by comparing 'this' time
   function refreshColor() {
     $('.time-block').each(function(){
       // console.log(this.id + ' :id = ' + currentHour)
@@ -66,15 +59,12 @@ $(function () {
       }
     })
   }
-  
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
+
+  // setInterval function to set the time and date and update it every second
   setInterval(function () {
     cDay.textContent = dayjs().format('MMMM/DD/YYYY');
     cTime.textContent = dayjs().format('hh:mm:ss a');
+    // I tried calling refreshColor in here but when I waited to see if it would update without refreshing I did not see any change
     refreshColor()
   }, 1000);
 });
