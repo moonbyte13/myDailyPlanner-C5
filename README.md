@@ -1,6 +1,7 @@
 # My Daily Planner
 
 ## Description
+This was a fun little challenge. I really like the touch of the live clock, it really gives it that subtle interactive element.
 <br>
 
 ## Deployment Link 🔗
