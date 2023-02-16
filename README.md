@@ -5,8 +5,8 @@ This was a fun little challenge. I really like the touch of the live clock, it r
 <br>
 
 ## Deployment Link 🔗
-[Deployed Link](https://xmoonphasex.github.io/myDailyPlanner-C5/)<br>
-[Repo](https://github.com/XMoonphaseX/myDailyPlanner-C5)<br>
+[Deployed Link](https://moonphase13.github.io/myDailyPlanner-C5/)<br>
+[Repo](https://github.com/moonphase13/myDailyPlanner-C5)<br>
 
 ## User Story 📘
 ```md
@@ -43,4 +43,4 @@ Shoutout to the edX tutors, they help so much and are very paitent
 <br>
 
 ## Licence 🔑
-MIT © XMoonphaseX
+MIT © moonphase13
